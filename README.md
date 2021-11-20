@@ -17,6 +17,15 @@
     <img src="https://img.shields.io/github/license/sumerc/yappi.svg">
 </p>
 
+## Building Wheels
+
+After you run these two commands, the wheel for yappi should be found in `./wheels/`
+
+```
+make build-alpine-container
+make copy-wheel-to-host
+```
+
 ## Highlights
 
 - **Fast**: Yappi is fast. It is completely written in C and lots of love&care went into making it fast.
