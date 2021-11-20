@@ -1,0 +1,13 @@
+FROM python:3.9-alpine AS compile-image
+
+RUN apk update
+RUN apk add cmake make g++ linux-headers python3-dev git
+
+# ENV PATH=/root/.local/bin:$PATH
+
+WORKDIR /usr/src/build
+COPY yappi yappi
+COPY README.md setup.py ./
+
+RUN pip wheel -w wheels -e .
+CMD ["watch", "-n1", "echo"]
