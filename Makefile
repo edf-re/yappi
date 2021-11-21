@@ -17,8 +17,8 @@ sh:
 
 copy-alpine-wheels-to-host: build-alpine-wheels
 	rm -rf $(TMP_WHEELS_DIR)
-	docker cp $(shell docker create $(ALPINE_DOCKER_NAME)):/usr/wheels/ $(TMP_WHEELS_DIR)
-	rename linux alpine-linux $(TMP_WHEELS_DIR)/yappi-*.whl
+	docker cp $(shell docker create $(ALPINE_DOCKER_NAME)):/usr/build/wheels/ $(TMP_WHEELS_DIR)
+	rename linux musllinux_1_1 $(TMP_WHEELS_DIR)/yappi-*.whl
 	mkdir -p wheels/
 	cp $(TMP_WHEELS_DIR)/yappi-*.whl wheels/
 	rm -rf $(TMP_WHEELS_DIR)

@@ -5,7 +5,7 @@ FROM quay.io/pypa/musllinux_1_1_x86_64
 
 ENV PATH=/opt/python/cp38-cp38/bin:$PATH
 
-WORKDIR /usr/build-cp38
+WORKDIR /usr/build/build-cp38
 COPY yappi yappi
 COPY README.md setup.py ./
 
@@ -16,7 +16,7 @@ WORKDIR /usr/wheels
 # ENV PATH=/root/.local/bin:$PATH
 ENV PATH=/opt/python/cp39-cp39/bin:$PATH
 
-WORKDIR /usr/build-cp39
+WORKDIR /usr/build/build-cp39
 COPY yappi yappi
 COPY README.md setup.py ./
 
@@ -24,11 +24,11 @@ RUN pip wheel -w ../wheels -e .
 
 ENV PATH=/opt/python/cp310-cp310/bin:$PATH
 
-WORKDIR /usr/build-cp310
+WORKDIR /usr/build/build-cp310
 COPY yappi yappi
 COPY README.md setup.py ./
 
 RUN pip wheel -w ../wheels -e .
 
-WORKDIR /usr/src/
+WORKDIR /usr/build/
 CMD ["watch", "-n1", "echo"]
